@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+
+body {
+    font-family: "Lato", sans-serif;
+    border: 0px;
+    background-image: url("images/sunrise.jpg");
+    transition: 0.5s;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.menu_item {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu_item:hover {
+    color: #f1f1f1;
+}
+
+.menu_item:hover .img2 {
+    animation: slide 2s;
+    position: fixed;
+
+}
+
+
+.img2 {
+    height: 100px;
+    display: block;
+    position: absolute;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+.img_about {
+    width: 100%;
+    height: 50px;
+    z-index: -5;
+    background-image: url("images/curl6.jpg");
+
+
+    top: 100%;
+    position: fixed;
+/*
+    animation: flyin;
+*/
+    display: hidden;
+}
+
+@keyframes flyin {
+    from {top: 100%;}
+    to {top: 0px;}
+}
+
+@keyframes flyout {
+    from {top: 0px;}
+    to {top: 100%;}
+}
+
+#menu {
+    color: grey;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+@keyframes slide {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  50% {
+    left: 244px;
+    top: 100px;
+  }
+  100% {
+    left: 488px;
+    top: 0;
+  }
+}
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("menu").innerHTML = "&times;";
+    document.getElementById("menu").setAttribute("onclick", "closeNav()");
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("menu").innerHTML = "&#9776;";
+    document.getElementById("menu").setAttribute("onclick", "openNav()");
+}
+
+function bgimg_flyin(name) {
+    document.body.style.background = 'url("' + name + '")';
+
+}
+
+function words_flyin() {
+    console.log("words fly-in");
+}
+
+</script>
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <div onmouseover='bgimg_flyin("images/curl6.jpg")' class="menu_item">About</div>
+        <div onmouseover='bgimg_flyin("images/fuzzy.jpg")' class="menu_item">Services</div>
+        <div onmouseover='bgimg_flyin("images/skull.jpg")' class="menu_item">Clients</div>
+        <div onmouseover='bgimg_flyin("images/sunrise.jpg")' class="menu_item">Contact</div>
+    </div>
+
+    <span id="menu" class="menu" onclick="openNav()">&#9776;</span>
+    <figure class="img_about"></figure>
+<!--
+    <figure><img class="img2" src="images/fuzzy.jpg" alt="fuzzy"></figure>
+-->
+
+</body>
+
+<script type="text/javascript">
+    var menuItems = document.getElementsByClassName("menu_item");
+
+    for (var i = 0; i < menuItems.length; i++) {
+        menuItems[i].addEventListener('transitionend', words_flyin);
+    }
+</script>
+
+</html>
