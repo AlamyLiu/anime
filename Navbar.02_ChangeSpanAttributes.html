@@ -115,7 +115,7 @@ body {
 }
 
 /* The words that flys in after an menu item is selected */
-.menu_item_words_container {
+.menuitem_objs_container {
     display: none;
     position: relative;
     left: 70px;
@@ -139,7 +139,7 @@ function openNav() {
     document.getElementById("menu").setAttribute("onclick", "closeNav()");
 
     // clear item object (just hie its container to be easy)
-    document.getElementById("menu_item_words_container").style.display = "none";
+    document.getElementById("menuitem_objs_container").style.display = "none";
 
     // show the navigation menu
     var menuItems = document.getElementsByClassName("menu_item");
@@ -177,8 +177,8 @@ function click_menu_item(menuID) {
     // Paragraph text flyin
     console.log("ID = ", menuID);
 
-    // Show only the words that corresponds to the menu item (hide others)
-    var menuItems = document.getElementsByClassName("menu_item_words");
+    // Show only the container that corresponds to the menu item (hide others)
+    var menuItems = document.getElementsByClassName("words_container");
 
     for (var i = 0; i < menuItems.length; i++) {
         if (menuItems[i].id == menuID) {
@@ -190,7 +190,7 @@ function click_menu_item(menuID) {
         }
     }
 
-    // Words is ready, time to show the container
+    // Words is ready, time to show the container (menuitem_objs_container)
     menuItems[0].parentElement.style.display = "block";
 }
 
@@ -203,10 +203,10 @@ function words_flyin(name) {
 
 <body>
     <div id="mySidenav" class="sidenav">
-        <div id="menu_about"   onclick='click_menu_item("words_about")'    onmouseover='bgimg_flyin("images/curl6.jpg")'   class="menu_item">About</div>
-        <div id="menu_service" onclick='click_menu_item("words_services")' onmouseover='bgimg_flyin("images/fuzzy.jpg")'   class="menu_item">Services</div>
-        <div id="menu_clients" onclick='click_menu_item("words_clients")'  onmouseover='bgimg_flyin("images/skull.jpg")'   class="menu_item">Clients</div>
-        <div id="menu_contact" onclick='click_menu_item("words_contact")'  onmouseover='bgimg_flyin("images/sunrise.jpg")' class="menu_item">Contact</div>
+        <div id="menu_about"   onclick='click_menu_item("menu_about_container")'    onmouseover='bgimg_flyin("images/curl6.jpg")'   class="menu_item">About</div>
+        <div id="menu_service" onclick='click_menu_item("menu_services_container")' onmouseover='bgimg_flyin("images/fuzzy.jpg")'   class="menu_item">Services</div>
+        <div id="menu_clients" onclick='click_menu_item("menu_clients_container")'  onmouseover='bgimg_flyin("images/skull.jpg")'   class="menu_item">Clients</div>
+        <div id="menu_contact" onclick='click_menu_item("menu_contact_container")'  onmouseover='bgimg_flyin("images/sunrise.jpg")' class="menu_item">Contact</div>
     </div>
 
     <span id="menu" class="menu" onclick="openNav()">&#9776;</span>
@@ -215,25 +215,44 @@ function words_flyin(name) {
     <figure><img class="img2" src="images/fuzzy.jpg" alt="fuzzy"></figure>
 -->
 
-    <div id="menu_item_words_container" class="menu_item_words_container">
-        <div id="words_about" class="menu_item_words w3-animate-bottom">
-            <h2>About</h2>
-            <div class="menu_item_image">
-                <img src="obj_image/bird.jpg" alt="bird">
+    <div id="menuitem_objs_container" class="menuitem_objs_container">
+        <div id="menu_about_container" class="words_container menu_about_container">
+            <div id="words_about_obj0" class="menu_item_words w3-animate-bottom">
+                <h2>About</h2>
+                <div class="menu_item_image">
+                    <img src="obj_images/bird.jpg" alt="bird">
+                </div>
+                This is the Initial paragraph about About
             </div>
-            This is the paragraph about About
+            <div id="words_about_obj1" class="menu_item_words w3-animate-bottom">
+                <h2>About</h2>
+                <div class="menu_item_image">
+                    <img src="obj_images/bird.jpg" alt="bird">
+                </div>
+                This is the OBJ1 paragraph about About
+            </div>
         </div>
-        <div id="words_services" class="menu_item_words w3-animate-bottom">
-            <h2>Services</h2>
-            This is the paragraph about Services
+        <div id="menu_services_container" class="words_container menu_services_container">
+            <div id="words_services_obj0" class="menu_item_words w3-animate-bottom">
+                <h2>Services</h2>
+                This is the Initial paragraph about Services
+            </div>
+            <div id="words_services_obj1" class="menu_item_words w3-animate-bottom">
+                <h2>Services</h2>
+                This is the OBJ1 paragraph about Services
+            </div>
         </div>
-        <div id="words_clients" class="menu_item_words w3-animate-bottom">
-            <h2>Clients</h2>
-            This is the paragraph about Clients
+        <div id="menu_clients_container" class="words_container menu_clients_container">
+            <div id="words_clients" class="menu_item_words w3-animate-bottom">
+                <h2>Clients</h2>
+                This is the paragraph about Clients
+            </div>
         </div>
-        <div id="words_contact" class="menu_item_words w3-animate-bottom">
-            <h2>Contact</h2>
-            This is the paragraph about Contact
+        <div id="menu_contact_container" class="words_container menu_contact_container">
+            <div id="words_contact" class="menu_item_words w3-animate-bottom">
+                <h2>Contact</h2>
+                This is the paragraph about Contact
+            </div>
         </div>
     </div>
 </body>
