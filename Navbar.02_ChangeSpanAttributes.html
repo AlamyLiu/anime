@@ -121,6 +121,9 @@ body {
     left: 70px;
 }
 
+.menu_item_image {
+    float: left;
+}
 .menu_item_words {
     color: green;
 }
@@ -210,19 +213,22 @@ function words_flyin(name) {
 -->
 
     <div class="menu_item_words_container">
-        <div id="words_about" class="menu_item_words">
+        <div id="words_about" class="menu_item_words w3-animate-bottom">
             <h2>About</h2>
+            <div class="menu_item_image">
+                <img src="obj_image/bird.jpg" alt="bird">
+            </div>
             This is the paragraph about About
         </div>
-        <div id="words_services" class="menu_item_words">
+        <div id="words_services" class="menu_item_words w3-animate-bottom">
             <h2>Services</h2>
             This is the paragraph about Services
         </div>
-        <div id="words_clients" class="menu_item_words">
+        <div id="words_clients" class="menu_item_words w3-animate-bottom">
             <h2>Clients</h2>
             This is the paragraph about Clients
         </div>
-        <div id="words_contact" class="menu_item_words">
+        <div id="words_contact" class="menu_item_words w3-animate-bottom">
             <h2>Contact</h2>
             This is the paragraph about Contact
         </div>
