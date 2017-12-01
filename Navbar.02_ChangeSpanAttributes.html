@@ -177,10 +177,15 @@ function click_menu_item(menuID) {
     // Paragraph text flyin
     console.log("ID = ", menuID);
 
-    // Show only the container that corresponds to the menu item (hide others)
-    var menuItems = document.getElementsByClassName("words_container");
+    /*
+        Show only the child container (child of menuitem_objs_container)
+        that corresponds to the menu item (hide others)
+    */
+    var animate_container = document.getElementById("menuitem_objs_container");
+    var menuItems = animate_container.children;
 
     for (var i = 0; i < menuItems.length; i++) {
+        console.log("compare with: ", menuItems[i].id);
         if (menuItems[i].id == menuID) {
             console.log("Show", menuItems[i].id);
             menuItems[i].style.display = "block";
@@ -191,7 +196,7 @@ function click_menu_item(menuID) {
     }
 
     // Words is ready, time to show the container (menuitem_objs_container)
-    menuItems[0].parentElement.style.display = "block";
+    animate_container.style.display = "block";
 }
 
 function words_flyin(name) {
