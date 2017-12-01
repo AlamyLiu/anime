@@ -142,8 +142,8 @@ function bgimg_flyin(name) {
 
 }
 
-function words_flyin() {
-    console.log("words fly-in");
+function words_flyin(name) {
+    console.log(name);
 }
 
 </script>
@@ -166,10 +166,12 @@ function words_flyin() {
 </body>
 
 <script type="text/javascript">
+//    document.getElementById("menu_about").addEventListener('transitionend', words_flyin("item_about"));
+
     var menuItems = document.getElementsByClassName("menu_item");
 
     for (var i = 0; i < menuItems.length; i++) {
-        menuItems[i].addEventListener('transitionend', words_flyin);
+        menuItems[i].addEventListener('transitionend', words_flyin("transition finished"));
     }
 </script>
 
