@@ -12,7 +12,7 @@ body {
 
 .sidenav {
     height: 100%;
-    width: 0;
+    width: 70px;
     position: fixed;
     z-index: -1;
     top: 0;
@@ -28,7 +28,7 @@ body {
     text-decoration: none;
     font-size: 25px;
     color: #818181;
-    display: block;
+    display: none;
     transition: 0.3s;
 }
 
@@ -132,12 +132,29 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("menu").innerHTML = "&times;";
     document.getElementById("menu").setAttribute("onclick", "closeNav()");
+
+    // show the navigation menu
+    var menuItems = document.getElementsByClassName("menu_item");
+    for (var i = 0; i < menuItems.length; i++) {
+        menuItems[i].style.display = "block";
+    }
+
+    // show the navigation menu
+//    document.getElementById("mySidenav").style.display = "block";
+
 }
 
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.width = "70px";
     document.getElementById("menu").innerHTML = "&#9776;";
     document.getElementById("menu").setAttribute("onclick", "openNav()");
+
+    // hide the navigation menu
+    var menuItems = document.getElementsByClassName("menu_item");
+    for (var i = 0; i < menuItems.length; i++) {
+        menuItems[i].style.display = "none";
+    }
+//    document.getElementById("mySidenav").style.display = "none";
 }
 
 function bgimg_flyin(name) {
@@ -167,7 +184,6 @@ function click_menu_item(menuID) {
 
     // Words is ready, time to show the container
     menuItems[0].parentElement.style.display = "block";
-
 }
 
 function words_flyin(name) {
