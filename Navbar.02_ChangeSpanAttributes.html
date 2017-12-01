@@ -142,6 +142,13 @@ function bgimg_flyin(name) {
 
 }
 
+function click_menu_item(name) {
+    console.log("close nav");
+    closeNav();
+
+    console.log(name);
+}
+
 function words_flyin(name) {
     console.log(name);
 }
@@ -151,10 +158,10 @@ function words_flyin(name) {
 
 <body>
     <div id="mySidenav" class="sidenav">
-        <div onmouseover='bgimg_flyin("images/curl6.jpg")' class="menu_item">About</div>
-        <div onmouseover='bgimg_flyin("images/fuzzy.jpg")' class="menu_item">Services</div>
-        <div onmouseover='bgimg_flyin("images/skull.jpg")' class="menu_item">Clients</div>
-        <div onmouseover='bgimg_flyin("images/sunrise.jpg")' class="menu_item">Contact</div>
+        <div id="menu_about"   onclick='click_menu_item("words_about")'   onmouseover='bgimg_flyin("images/curl6.jpg")'   class="menu_item">About</div>
+        <div id="menu_service" onclick='click_menu_item("words_service")' onmouseover='bgimg_flyin("images/fuzzy.jpg")'   class="menu_item">Services</div>
+        <div id="menu_clients" onclick='click_menu_item("words_clients")' onmouseover='bgimg_flyin("images/skull.jpg")'   class="menu_item">Clients</div>
+        <div id="menu_contact" onclick='click_menu_item("words_contact")' onmouseover='bgimg_flyin("images/sunrise.jpg")' class="menu_item">Contact</div>
     </div>
 
     <span id="menu" class="menu" onclick="openNav()">&#9776;</span>
@@ -163,6 +170,24 @@ function words_flyin(name) {
     <figure><img class="img2" src="images/fuzzy.jpg" alt="fuzzy"></figure>
 -->
 
+    <div class="menu_item_words_container">
+        <p id="words_about" class="menu_item_words">
+            <h2>About</h2>
+            This is the paragraph about About
+        </p>
+        <p id="words_services" class="menu_item_words">
+            <h2>Services</h2>
+            This is the paragraph about Services
+        </p>
+        <p id="words_clients" class="menu_item_words">
+            <h2>Clients</h2>
+            This is the paragraph about Clients
+        </p>
+        <p id="words_contact" class="menu_item_words">
+            <h2>Contact</h2>
+            This is the paragraph about Contact
+        </p>
+    </div>
 </body>
 
 <script type="text/javascript">
