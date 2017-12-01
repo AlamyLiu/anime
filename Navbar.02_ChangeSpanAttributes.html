@@ -138,6 +138,9 @@ function openNav() {
     document.getElementById("menu").innerHTML = "&times;";
     document.getElementById("menu").setAttribute("onclick", "closeNav()");
 
+    // clear item object (just hie its container to be easy)
+    document.getElementById("menu_item_words_container").style.display = "none";
+
     // show the navigation menu
     var menuItems = document.getElementsByClassName("menu_item");
     for (var i = 0; i < menuItems.length; i++) {
@@ -146,7 +149,6 @@ function openNav() {
 
     // show the navigation menu
 //    document.getElementById("mySidenav").style.display = "block";
-
 }
 
 function closeNav() {
@@ -159,6 +161,7 @@ function closeNav() {
     for (var i = 0; i < menuItems.length; i++) {
         menuItems[i].style.display = "none";
     }
+
 //    document.getElementById("mySidenav").style.display = "none";
 }
 
@@ -212,7 +215,7 @@ function words_flyin(name) {
     <figure><img class="img2" src="images/fuzzy.jpg" alt="fuzzy"></figure>
 -->
 
-    <div class="menu_item_words_container">
+    <div id="menu_item_words_container" class="menu_item_words_container">
         <div id="words_about" class="menu_item_words w3-animate-bottom">
             <h2>About</h2>
             <div class="menu_item_image">
