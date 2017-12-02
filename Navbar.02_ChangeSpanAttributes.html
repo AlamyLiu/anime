@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
+<title>Web page title</title>
+<style>
 
 html {
     height: 100%;
@@ -156,7 +157,7 @@ body {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script type="text/javascript">
+<script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("menu").innerHTML = "&times;";
@@ -299,9 +300,9 @@ function words_flyin(name) {
             </div>
         </div>
     </div>
-</body>
 
-<script type="text/javascript">
+<script>
+
 //    document.getElementById("menu_about").addEventListener('transitionend', words_flyin("item_about"));
 
     var menuItems = document.getElementsByClassName("menu_item");
@@ -309,6 +310,8 @@ function words_flyin(name) {
     for (var i = 0; i < menuItems.length; i++) {
         menuItems[i].addEventListener('transitionend', words_flyin("transition finished"));
     }
+
 </script>
+</body>
 
 </html>
