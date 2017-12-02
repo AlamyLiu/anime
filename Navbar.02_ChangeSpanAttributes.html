@@ -146,6 +146,19 @@ body {
     left: 70px;
 }
 
+/*
+    Common CSS for every object
+        about_obj0, about_obj1, ...
+        services_obj0, services_obj1, ...
+        clients_obj0, clients_obj1, ...
+        contact_obj0, contact_obj1, ...
+ */
+.content {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    z-index: 0;
+}
 
 #about_obj0 {
     width: 100%;
@@ -160,25 +173,49 @@ body {
 */
 }
 
-/*
-#words_about_obj0 img {
-    vertical-align: top;
-    width: 100%;
-    height: auto;
-}
-*/
 
-#services_obj0 p {
+
+#services_obj0::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     background-image: url("obj_images/circle.png");
+    background-size: cover;
     opacity: 0.4;
 }
 
-.content {
+#services_obj1::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    height: 500px;
-    position: relative;
-    z-index: 0;
+    height: 100%;
+    z-index: -1;
+    background-image: url("obj_images/mario.png");
+    background-size: cover;
+    opacity: 0.4;
 }
+
+#services_obj2::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("obj_images/owl.png");
+    background-size: cover;
+    opacity: 0.4;
+}
+
+
+
 /*
 .clients_container .content {
     position: absolute;
@@ -214,7 +251,8 @@ body {
 }
 
 .menu_item_image {
-    float: left;    //     This will disable the animation of flying-in/-out.
+    /* This will disable the animation of flying-in/-out. */
+    float: left;
 
 }
 .menu_item_words {
@@ -401,16 +439,18 @@ function words_flyin(name) {
                 This is the OBJ1 paragraph about About
             </div>
         </div>
-        <div id="services_container" class="words_container services_container">
-            <div id="services_obj0" class="menu_item_words w3-animate-bottom">
+        <div id="services_container" class="words_container services_container w3-animate-bottom">
+            <div id="services_obj0" class="content">
                 <h2>Services</h2>
-                <p>
                 This is the Initial paragraph about Services
-                </p>
             </div>
-            <div id="services_obj1" class="menu_item_words w3-animate-bottom">
+            <div id="services_obj1" class="content">
                 <h2>Services</h2>
                 This is the OBJ1 paragraph about Services
+            </div>
+            <div id="services_obj2" class="content">
+                <h2>Services II</h2>
+                This is the OBJ II paragraph about Services
             </div>
         </div>
         <div id="clients_container" class="bg_container clients_container w3-animate-bottom">
