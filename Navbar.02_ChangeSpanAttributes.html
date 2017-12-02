@@ -121,6 +121,7 @@ body {
 .w3-animate-top-out {
     position:relative;
     animation:animatetopout 0.4s;
+    animation-fill-mode: forwards;
 }
 @keyframes animatetopout {
     from {top:0;opacity:1}
@@ -132,7 +133,7 @@ body {
 
 .w3-animate-bottom {
     position: relative;
-    animation: animatebottom 0.4s;
+    animation: animatebottom 0.6s;
 }
 @keyframes animatebottom {
     from {bottom:-300px;opacity:0}
@@ -248,6 +249,21 @@ body {
     background-image: url("obj_images/mario.png");
     background-size: cover;
     opacity: 0.4;
+}
+
+.image_container {
+    position: relative;
+}
+
+.description {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+
+img {
+    opacity: 0.3;
 }
 
 .menu_item_image {
@@ -565,11 +581,21 @@ function words_flyin(name) {
         <div id="contact_container" class="bg_container contact_container">
             <div id="contact_obj0" class="menu_item_words w3-animate-bottom">
                 <h2>Contact</h2>
-                This is the paragraph about Contact
+                <div class="image_container">
+                    <img src="obj_images/atom.png" alt="atom">
+                    <div class="description">
+                    This is the paragraph about Contact
+                    </div>
+                </div>
             </div>
             <div id="contact_obj1"" class="menu_item_words w3-animate-bottom">
                 <h2>Contact II</h2>
-                This is the II paragraph about Contact
+                <div class="image_container">
+                    <img src="obj_images/bird.png" alt="bird">
+                    <div class="description">
+                    This is the II paragraph about Contact
+                    </div>
+                </div>
             </div>
         </div>
     </div>
