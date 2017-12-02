@@ -3,6 +3,10 @@
 <head>
 <style type="text/css">
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: "Lato", sans-serif;
     border: 0px;
@@ -217,6 +221,21 @@ function click_menu_item(menuID) {
 
     // Words is ready, time to show the container (menuitem_objs_container)
     animate_container.style.display = "block";
+
+    /*
+        enable 'wheel' event on whole 'html' page
+        htmlObj.setAttribute("onmousewheel", 'wheel_event_handler("menu_about_container")');
+    */
+    var htmlObj = document.getElementsByTagName("html")[0];
+    var eventAttribute = 'wheel_event_handler("' + menuID + '")';
+    console.log("setAttribute:", eventAttribute);
+    htmlObj.setAttribute("onmousewheel", eventAttribute);
+
+}
+
+function wheel_event_handler(menuID) {
+    console.log("scroll out/in:", menuID);
+
 }
 
 function words_flyin(name) {
