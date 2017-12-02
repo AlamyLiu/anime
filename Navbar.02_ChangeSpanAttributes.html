@@ -146,10 +146,65 @@ body {
     left: 70px;
 }
 
+
+#words_about_obj0 {
+    width: 100%;
+    height: 100%;
+    background: url("obj_images/bird.jpg");
+    background-size: contain;
+/*
+    background-image: url("obj_images/bird.jpg");
+    background-size: cover;  // auto, contain, cover
+    width: 100%;
+    height: 100%;
+*/
+}
+
+/*
+#words_about_obj0 img {
+    vertical-align: top;
+    width: 100%;
+    height: auto;
+}
+*/
+
+#words_services_obj0 p {
+    background-image: url("obj_images/circle.png");
+    opacity: 0.4;
+}
+
+.clients_container {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+.clients_container .content {
+    position: absolute;
+    z-index: 0;
+    text-align: center;
+    width: 100%;
+}
+.clients_container::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("obj_images/atom.png");
+    background-size: cover;
+    opacity: 0.4;
+}
+
 .menu_item_image {
-    float: left;
+    float: left;    //     This will disable the animation of flying-in/-out.
+
 }
 .menu_item_words {
+    color: green;
+}
+.content {
     color: green;
 }
 
@@ -195,6 +250,55 @@ function bgimg_flyin(name) {
 
 }
 
+/*
+     menuitem_objs_container
+    +-----------------------------------+
+    |  menu_about_container             |
+    |  +-----------------------------+  |
+    |  |  words_about_obj0           |  |
+    |  |  words_about_obj1           |  |
+    |  |  words_about_objx           |  |
+    |  +-----------------------------+  |
+    |                                   |
+    |  menu_service_container           |
+    |  +-----------------------------+  |
+    |  |  words_services_obj0        |  |
+    |  |  words_services_obj1        |  |
+    |  |  words_services_objx        |  |
+    |  +-----------------------------+  |
+    |                                   |
+    |  menu_clients_container           |
+    |  +-----------------------------+  |
+    |  |  words_clients_obj0         |  |
+    |  |                             |  |
+    |  +-----------------------------+  |
+    |                                   |
+    |  menu_contact_container           |
+    |  +-----------------------------+  |
+    |  |  words_contact_obj0         |  |
+    |  |                             |  |
+    |  +-----------------------------+  |
+    +-----------------------------------+
+
+*/
+
+/*
+    menuID: [menu_about_container | menu_service_container | ... ]
+ */
+function prepare_first_obj(containerObj) {
+
+    // Show the 1st (0-th) child, hide the others
+    var objs = containerObj.children;
+
+    for (var i = 0; i < objs.length; i++) {
+        if (i == 0) {
+            objs[i].style.display = "inline";
+        } else {
+            objs[i].style.display = "none";
+        }
+    }
+}
+
 function click_menu_item(menuID) {
     console.log("close nav");
     closeNav();
@@ -209,10 +313,12 @@ function click_menu_item(menuID) {
     var animate_container = document.getElementById("menuitem_objs_container");
     var menuItems = animate_container.children;
 
+    // Iterate through menu_xxx_container
     for (var i = 0; i < menuItems.length; i++) {
         console.log("compare with: ", menuItems[i].id);
         if (menuItems[i].id == menuID) {
             console.log("Show", menuItems[i].id);
+//            prepare_first_obj(menuItems[i]);
             menuItems[i].style.display = "block";
         } else {
             console.log("Hide", menuItems[i].id);
@@ -237,6 +343,8 @@ function click_menu_item(menuID) {
 function wheel_event_handler(menuID) {
     console.log("scroll out/in:", menuID);
 
+    $('#clients_container').animate({top: "-1000px"}, 2000);
+
 }
 
 function words_flyin(name) {
@@ -250,7 +358,7 @@ function words_flyin(name) {
     <div id="mySidenav" class="sidenav">
         <div id="menu_about"   onclick='click_menu_item("menu_about_container")'    onmouseover='bgimg_flyin("images/curl6.jpg")'   class="menu_item">About</div>
         <div id="menu_service" onclick='click_menu_item("menu_services_container")' onmouseover='bgimg_flyin("images/fuzzy.jpg")'   class="menu_item">Services</div>
-        <div id="menu_clients" onclick='click_menu_item("menu_clients_container")'  onmouseover='bgimg_flyin("images/skull.jpg")'   class="menu_item">Clients</div>
+        <div id="menu_clients" onclick='click_menu_item("clients_container")'  onmouseover='bgimg_flyin("images/skull.jpg")'   class="menu_item">Clients</div>
         <div id="menu_contact" onclick='click_menu_item("menu_contact_container")'  onmouseover='bgimg_flyin("images/sunrise.jpg")' class="menu_item">Contact</div>
     </div>
 
@@ -265,14 +373,14 @@ function words_flyin(name) {
             <div id="words_about_obj0" class="menu_item_words w3-animate-bottom">
                 <h2>About</h2>
                 <div class="menu_item_image">
-                    <img src="obj_images/bird.jpg" alt="bird">
+                    <div style="background-image:url('obj_images/bird.png'); width: 259px; height: 194px;"></div>
                 </div>
                 This is the Initial paragraph about About
             </div>
             <div id="words_about_obj1" class="menu_item_words w3-animate-bottom">
                 <h2>About</h2>
                 <div class="menu_item_image">
-                    <img src="obj_images/bird.jpg" alt="bird">
+                    <img src="obj_images/apple.png" alt="apple">
                 </div>
                 This is the OBJ1 paragraph about About
             </div>
@@ -280,23 +388,41 @@ function words_flyin(name) {
         <div id="menu_services_container" class="words_container menu_services_container">
             <div id="words_services_obj0" class="menu_item_words w3-animate-bottom">
                 <h2>Services</h2>
+                <p>
                 This is the Initial paragraph about Services
+                </p>
             </div>
             <div id="words_services_obj1" class="menu_item_words w3-animate-bottom">
                 <h2>Services</h2>
                 This is the OBJ1 paragraph about Services
             </div>
         </div>
+        <div id="clients_container" class="bg_container clients_container w3-animate-bottom">
+            <div id="clients_obj0" class="content">
+                <h2>Clients</h2>
+                This is the Initial paragraph about Clients
+            </div>
+            <div id="clients_obj1" class="content">
+                <h2>Clients</h2>
+                This is the SECOND paragraph about Clients
+            </div>
+        </div>
+<!--
         <div id="menu_clients_container" class="words_container menu_clients_container">
-            <div id="words_clients" class="menu_item_words w3-animate-bottom">
+            <div id="words_clients_obj0" class="menu_item_words w3-animate-bottom">
                 <h2>Clients</h2>
                 This is the paragraph about Clients
             </div>
         </div>
+-->
         <div id="menu_contact_container" class="words_container menu_contact_container">
-            <div id="words_contact" class="menu_item_words w3-animate-bottom">
+            <div id="words_contact_obj0" class="menu_item_words w3-animate-bottom">
                 <h2>Contact</h2>
                 This is the paragraph about Contact
+            </div>
+            <div id="words_contact_obj1"" class="menu_item_words w3-animate-bottom">
+                <h2>Contact II</h2>
+                This is the II paragraph about Contact
             </div>
         </div>
     </div>
