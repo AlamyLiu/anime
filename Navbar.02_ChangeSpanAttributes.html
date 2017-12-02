@@ -267,6 +267,13 @@ body {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
+
+/*
+    Which object is current on screen
+    i.e.: services_obj1 --> 1
+ */
+var objIndex = 0;
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("menu").innerHTML = "&times;";
@@ -339,16 +346,50 @@ function bgimg_flyin(name) {
 /*
     menuID: [about_container | service_container | ... ]
  */
-function prepare_first_obj(containerObj) {
+function flyin_obj(containerObj, child_idx) {
 
-    // Show the 1st (0-th) child, hide the others
+    console.log("flyIN: " + containerObj.parentElement.id + " " + child_idx + "-th child");
+
+    // Show the n-th child, hide the others
     var objs = containerObj.children;
 
     for (var i = 0; i < objs.length; i++) {
-        if (i == 0) {
+        if (i == child_idx) {
             objs[i].style.display = "block";
+
+            // Enable fly-in animation
+            objs[i].classList.add("w3-animate-bottom");
+
         } else {
             objs[i].style.display = "none";
+
+            // Disable fly-in animation
+            objs[i].classList.remove("w3-animate-bottom");
+        }
+    }
+}
+
+function flyout_obj(containerObj, child_idx) {
+
+    console.log("flyOUT: " + containerObj.parentElement.id + " " + child_idx + "-th child");
+
+    var objs = containerObj.children;
+
+    for (var i = 0; i < objs.length; i++) {
+        if (i == child_idx) {
+            objs[i].style.display = "block";
+
+            // Enable fly-out animation
+            objs[i].classList.remove("w3-animate-bottom");
+            objs[i].classList.add("w3-animate-top-out");
+/*
+        } else {
+            objs[i].style.display = "none";
+
+            // Disable fly-in animation
+            objs[i].classList.remove("w3-animate-bottom");
+            objs[i].classList.remove
+*/
         }
     }
 }
@@ -367,12 +408,12 @@ function click_menu_item(menuID) {
     var animate_container = document.getElementById("menuitem_objs_container");
     var menuItems = animate_container.children;
 
-    // Iterate through menu_xxx_container
+    // Iterate through xxx_container
     for (var i = 0; i < menuItems.length; i++) {
         console.log("compare with: ", menuItems[i].id);
         if (menuItems[i].id == menuID) {
             console.log("Show", menuItems[i].id);
-            prepare_first_obj(menuItems[i]);
+            flyin_obj(menuItems[i], objIndex);
             menuItems[i].style.display = "block";
         } else {
             console.log("Hide", menuItems[i].id);
@@ -397,7 +438,57 @@ function click_menu_item(menuID) {
 function wheel_event_handler(menuID) {
     console.log("scroll out/in:", menuID);
 
-    $('#clients_container').animate({top: "-1000px"}, 2000);
+    /*
+        Iterate through children (objects)
+        i.e.: about_obj0, about_obj1, about_obj2, ...
+
+        fly-out the current one (objIndex)
+        fly-in the next one
+    */
+    var animate_container = document.getElementById("menuitem_objs_container");
+    var containerObjs = animate_container.children;
+
+    for (i = 0; i < containerObjs.length; i++) {
+        if (containerObjs[i].id == menuID) {
+            console.log("Fly out: " + menuID + " " + objIndex + "-th child");
+            containerObj = containerObjs[i];
+
+            // It's hard to fly out
+//            flyout_obj(containerObj, objIndex);
+        }
+
+    }
+
+
+    // Step to next object, back to the 0-th one if it goes over the last one
+    objIndex++;
+    if (objIndex >= containerObj.children.length) {
+        objIndex = 0;
+    }
+
+    flyin_obj(containerObj, objIndex);
+
+    // Find the current one and fly it out
+    for (var i = 0; i < containerObj.length; i++) {
+        if (objIndex == i) {
+            // $('#clients_container').animate({top: "-1000px"}, 2000);
+//            $('#' + objContainer).animate({top: "-1000px"}, 2000);
+
+
+
+            // The is the next one to show
+            objIndex += 1;
+
+            // quit the loop
+            break;
+        }
+    }
+
+    // If it goes over the last one, back to the 1st one
+
+    // Fly-in the next one
+//    $('#' + objContainer).animate({top: "1000px"}, 2000);
+
 
 }
 
