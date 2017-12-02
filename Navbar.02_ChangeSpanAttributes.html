@@ -346,7 +346,7 @@ function prepare_first_obj(containerObj) {
 
     for (var i = 0; i < objs.length; i++) {
         if (i == 0) {
-            objs[i].style.display = "inline";
+            objs[i].style.display = "block";
         } else {
             objs[i].style.display = "none";
         }
@@ -372,7 +372,7 @@ function click_menu_item(menuID) {
         console.log("compare with: ", menuItems[i].id);
         if (menuItems[i].id == menuID) {
             console.log("Show", menuItems[i].id);
-//            prepare_first_obj(menuItems[i]);
+            prepare_first_obj(menuItems[i]);
             menuItems[i].style.display = "block";
         } else {
             console.log("Hide", menuItems[i].id);
