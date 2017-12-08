@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Collapse demo</title>
+
+<!--
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+-->
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+	<script src="js/collapse.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/collapse.css">
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="header-inner">
+		  <div id="header-auto">
+	    	<div id="newsletter" class="" style="display:none">
+	    		<div id="newsletter-inner">
+	    			<div id="newsletter-close" onclick="pushUp()">&times;</div>
+	    			<div id="newsletter-text" class="col col-50">
+	    				<div class="col-inner-hori small">
+	    					Socio Newsletter<br/>
+	    					<p class="padd grey double">
+	    						Subscribe to our newsletter to stay informed about our latest work and studio news. As well as information on current positions and internships.
+								</p>
+	    				</div>
+	    			</div>
+	    			<div class="col col-50">
+	    				<div class="col-inner-hori small">
+
+	            	<form action="http://sociodesign.createsend.com/t/d/s/njkjl/" method="post">
+	    						<div class="col pc-40 mw">
+	    							<div class="mr12">
+	    						  	<div class="mc-field-group">
+	                    	<label for="fieldName">Name</label><br />
+	                    	<input id="fieldName" name="cm-name" type="text" />
+	    						  	</div>
+	    							</div>
+	    						</div>
+	    						<div class="col pc-40 mw">
+	    							<div class="mr12">
+	    						  	<div class="mc-field-group">
+	                    	<label for="fieldEmail">Email</label><br />
+	                    	<input id="fieldEmail" name="cm-njkjl-njkjl" type="email" required />
+	    						  	</div>
+	    							</div>
+	    						</div>
+	    						<div class="col pc-20 right mw-2">
+	                	<br/>
+	                	<div class="clear">
+	                  	<input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button">
+	                	</div>
+	    						</div>
+	            	</form>
+
+	    				</div>
+	    			</div>
+
+	    			<div class="col col-100">
+	    				<div class="col-inner-hori">
+	    					<hr/>
+	    				</div>
+	    			</div>
+
+	    		</div>	<!-- newsletter-inner -->
+	    	</div>	<!-- newsletter -->
+
+				<div id="hh">
+					<div id="logo-holder" class="col col-50">
+						<div class="col-inner-hori">
+					  	<h1><a href="#" id="logo" class="history" alt="" title="">&nbsp;</a></h1>
+						</div>
+					</div>
+					<div id="mmmenu" class="col col-50">
+						<div class="col-inner-hori" style="overflow:auto;">
+						   <div id="zzzz">
+								 <ul id="menu-main-menu" class="menu"><li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7"><a class='history' href="#">Projects</a><div class="clear">&nbsp;</div></li>
+									 <li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a class='history' href="#">Profile</a><div class="clear">&nbsp;</div></li>
+									 <li id="menu-item-404" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-404"><a class='history' href="#">Journal</a><div class="clear">&nbsp;</div></li>
+									 <li id="menu-item-8" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8"><a class='history' href="#">Contact</a><div class="clear">&nbsp;</div></li>
+								 </ul>
+						 	</div>
+							<div id="xxxx" class="right">
+							  <div id="menu-item-13" class="menu-item-13 menu-item">
+							    <a href="#" onclick="pullDown()">Subscribe</a>
+							  </div>
+							</div>
+						</div>
+					</div>	<!--	mmmenu -->
+				</div>	<!-- hh -->
+		  </div>	<!-- header-auto -->
+		</div>	<!-- header-inner -->
+	</div>	<!-- header -->
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+
+#menu-item-13 a:active {
+    console.log("click subscribe")
+}
+
+@keyframes pull-down {
+  from {
+    top: -100px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+.anime-pull-down {
+  position: relative;
+
+  animation: pull-down 2s;
+}
+
+@keyframes push-up {
+  from {
+    top: 0px;
+    opacity: 1;
+  }
+  to {
+    top: -100px;
+    opacity: 0;
+  }
+}
+
+.anime-push-up {
+  animation: push-up 2s;
+}
